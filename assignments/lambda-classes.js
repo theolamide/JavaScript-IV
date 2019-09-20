@@ -19,10 +19,10 @@ class Instructor extends Person{
     this.catchPhrase = InstructorAttributes.catchPhrase
     }
         demo(subject){
-            return `Today we are learning about ${this.favLanguage}`
+            return `Today we are learning about ${subject}`
         };
-        grade(Student,subject){
-            return `${StudentObj.name} receives a perfect score on ${StudentObj.favSubjects[0]} project.`
+        grade(student,subject){
+            return `${student} receives a perfect score on ${subject} project.`
         }
 }
 
@@ -36,17 +36,12 @@ class Student extends Person{
     }
 
     listsSubjects(){
-
         for(let i=0; i<StudentObj.favSubjects.length; i++){
-            return `${this.name}'s favorite subjects are:
-                1. ${StudentObj.favSubjects[0]} 
-                2. ${StudentObj.favSubjects[1]} 
-                3. ${StudentObj.favSubjects[2]}`}              
+            console.log(StudentObj.favSubjects[i])
+        }
         }         
-}    
-        // StudentObj.favSubjects.forEach(function(items){
-        //     return items;
-        // });
+}   
+      
 
 class ProjectManager extends Instructor{
     constructor(ProjectManagerAttributes){
@@ -55,10 +50,10 @@ class ProjectManager extends Instructor{
         this.favInstructor = ProjectManagerAttributes.favInstructor
     }
     standUp(channelName){
-        return `${this.name} announces to ${StudentObj.className}, @channel standy times!`
+        return `${this.name} announces to ${channelName}, @channel standy times!`
     };
-    debugsCode(Student, subject){
-        return `${this.name} debugs ${StudentObj.name}'s code on ${StudentObj.favSubjects[2]}`
+    debugsCode(student, subject){
+        return `${this.name} debugs ${student.name}'s code on ${subject}`
     }
 }
 
@@ -100,8 +95,9 @@ const ProjectManagerObj = new ProjectManager({
 })
 
 console.log(PersonObj.speak());
-console.log(InstructorObj.demo());
+console.log(InstructorObj.demo("HTML"));
 console.log(InstructorObj.grade())
-console.log(ProjectManagerObj.standUp())
-console.log(ProjectManagerObj.debugsCode())
-console.log(StudentObj.listsSubjects())
+console.log(ProjectManagerObj.standUp("Web246"))
+console.log(ProjectManagerObj.debugsCode(StudentObj,"CSS"))
+StudentObj.listsSubjects()
+
