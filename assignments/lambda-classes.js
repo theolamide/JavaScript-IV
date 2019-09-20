@@ -11,7 +11,6 @@ class Person{
 }
 
 
-
 class Instructor extends Person{
     constructor (InstructorAttributes){
     super(InstructorAttributes);
@@ -23,10 +22,9 @@ class Instructor extends Person{
             return `Today we are learning about ${this.favLanguage}`
         };
         grade(Student,subject){
-            return `${StudentObj.name} receives a perfect score on ${StudentObj.favSubjects}`
+            return `${StudentObj.name} receives a perfect score on ${StudentObj.favSubjects[0]} project.`
         }
 }
-
 
 
 class Student extends Person{
@@ -36,12 +34,19 @@ class Student extends Person{
     this.className = StudentAttributes.className,
     this.favSubjects = StudentAttributes.favSubjects
     }
-        // listsSubjects(){
-        //     favSubjects.forEach(function(items){
-        //         return 
-        //     })            
-        // }
-}
+
+    listsSubjects(){
+
+        for(let i=0; i<StudentObj.favSubjects.length; i++){
+            return `${this.name}'s favorite subjects are:
+                1. ${StudentObj.favSubjects[0]} 
+                2. ${StudentObj.favSubjects[1]} 
+                3. ${StudentObj.favSubjects[2]}`}              
+        }         
+}    
+        // StudentObj.favSubjects.forEach(function(items){
+        //     return items;
+        // });
 
 class ProjectManager extends Instructor{
     constructor(ProjectManagerAttributes){
@@ -99,3 +104,4 @@ console.log(InstructorObj.demo());
 console.log(InstructorObj.grade())
 console.log(ProjectManagerObj.standUp())
 console.log(ProjectManagerObj.debugsCode())
+console.log(StudentObj.listsSubjects())
